@@ -8,8 +8,8 @@ import java.util.stream.Stream;
 public class Main {
 
     public static void main(String[] args) {
-        List<Integer> list = new ArrayList<Integer>(List.of(1, 3, 9, 5, 7, 3, 1, 456, 1));
-        Stream stream = list.stream();
+        List<Integer> list = new ArrayList<>(List.of(1, 3, 9, 5, 7, 3, 1, 456, 1));
+        Stream<Integer> stream = list.stream();
         BiConsumer<Optional<Integer>, Optional<Integer>> biConsumer = (n1, n2) -> System.out.println(n1 + "\n" + n2);
         findMinMax(stream, Comparator.naturalOrder(), biConsumer);
         stream.close();
