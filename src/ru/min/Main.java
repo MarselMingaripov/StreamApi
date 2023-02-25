@@ -13,7 +13,7 @@ public class Main {
         BiConsumer<Optional<Integer>, Optional<Integer>> biConsumer = (n1, n2) -> System.out.println(n1 + "\n" + n2);
         findMinMax(stream, Comparator.naturalOrder(), biConsumer);
         stream.close();
-        countHonest(list);
+        System.out.println(countHonest(list));
     }
 
     public static <T> void findMinMax(Stream<? extends T> stream, Comparator<? super T> order, BiConsumer<Optional<T>, Optional<T>> minMaxConsumer) {
@@ -27,10 +27,11 @@ public class Main {
         }
     }
 
-    public static void countHonest(List<Integer> list) {
-        List<Integer> tList = list.stream()
+    public static long countHonest(List<Integer> list) {
+        return list.stream()
                 .filter(v -> v % 2 == 0)
-                .collect(Collectors.toList());
-        System.out.println(tList.size());
+                .peek(System.out::println)
+                .count();
+
     }
 }
